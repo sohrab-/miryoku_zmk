@@ -139,6 +139,7 @@ jobs:
           then
             kconfig_file="${GITHUB_WORKSPACE}/miryoku_zmk/config/$keyboard_split.conf"
             echo "${{ matrix.kconfig }}" >> "$kconfig_file"
+            cat "$kconfig_file"
             artifact_build_name="$artifact_build_name kconfig_"`echo "${{ matrix.kconfig }}" | md5sum | head -c "$hash_length"`
           fi
           test "$MIRYOKU_DEBUG" = 'MIRYOKU_DEBUG_TRUE' && test -f "$kconfig_file" && cp "$kconfig_file" "$artifact_dir"
